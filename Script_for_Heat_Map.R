@@ -25,16 +25,17 @@ ggplot(map_data) +
   geom_sf(aes(fill = producao), color = "white", linewidth = 0.3) +
   scale_fill_gradient(
     low = "lightgreen",
-    high = "darkgreen"
+    high = "darkgreen",
+    labels = function(x) paste0(round(x / 1e9, 1), " bi"),
+    name = "Produção (bilhões de t)"
   ) +
-  theme_minimal() +
+  theme_void() +
   annotation_scale(location = "bl", width_hint = 0.3, bar_cols = c("black", "white")) +
   annotation_north_arrow(location = "tl", which_north = "true", 
                          pad_x = unit(0.2, "in"), pad_y = unit(0.2, "in"),
                          style = north_arrow_fancy_orienteering) +
   labs(
-    title = "Produção Total por Estado Brasileiro",
-    fill = "Produção (Toneladas)"
+    title = "Produção Total por Estado Brasileiro"
   )
 
 
